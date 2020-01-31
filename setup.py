@@ -11,15 +11,20 @@ version = '0.1.0'
 from distutils.core import setup
 
 setup(
-    name='gallium',
+    name='keymaster',
     version=version,
-    description='A micro CLI development framework',
-    license='MIT',
+    description='Key/Secret Management System',
+    license='Apache 2.0',
     author='Juti Noppornpitak',
     author_email='juti_n@yahoo.co.jp',
     url='https://github.com/shiroyuki/gallium',
     packages=[
         'keymaster',
+        'keymaster.cli',
+        'keymaster.cli.kms',
+        'keymaster.cli.kms.inline',
+        'keymaster.cli.util',
+        'keymaster.model',
     ],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
@@ -35,6 +40,14 @@ setup(
         'imagination>=3.0.0',
         'kotoba',
         'cryptography',
+        'keyring',
+        'pyperclip',
     ],
     python_requires='>=3.7',
+    entry_points = {
+        'console_scripts': [
+            'keymaster=keymaster.starter:activate',
+            'km=keymaster.starter:activate',
+        ],
+    }
 )

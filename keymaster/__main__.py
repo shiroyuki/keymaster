@@ -1,10 +1,3 @@
-from gallium.starter import main
+from .starter import activate
 
-main(
-    console_name='keymaster' if __name__ == '__main__' else None,
-    config_content=dict(imports=[
-        'keymaster.cli.kms.core_init',
-        'keymaster.cli.kms.helper_lp_import',
-    ]),
-    in_isolation=True,
-)
+activate()

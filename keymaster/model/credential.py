@@ -3,9 +3,11 @@ from time import time
 from typing import Optional, List
 from uuid import uuid4
 
+from keymaster.model.secret import Secret
 
-@dataclass(frozen=True)
-class Credential:
+
+@dataclass
+class Credential(Secret):
     uuid: str
     name: str
     username: str
