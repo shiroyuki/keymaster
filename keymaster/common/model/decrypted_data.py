@@ -1,8 +1,8 @@
 from dataclasses import dataclass
 from typing import List, Any, Dict, Optional
 
-from keymaster.model.credential import Credential
-from keymaster.model.note import Note
+from keymaster.common.model.credential import Credential
+from keymaster.common.model.note import Note
 
 
 @dataclass

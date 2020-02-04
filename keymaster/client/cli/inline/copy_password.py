@@ -5,9 +5,10 @@ from typing import List
 import pyperclip
 from imagination import container
 
-from keymaster.cli.kms.inline.abc import SubCommand, InlineParser, InlineRuntimeError
-from keymaster.databank import Databank
-from keymaster.model.credential import Credential
+from keymaster.client.cli.inline.abc import SubCommand, InlineParser, InlineRuntimeError
+from keymaster.client.service.databank import Databank
+from keymaster.common.model.credential import Credential
+from keymaster.common.model.note import Note
 
 
 class CopyPassword(SubCommand):
@@ -27,8 +28,12 @@ class CopyPassword(SubCommand):
         db: Databank = container.get(Databank)
         entry: Credential = db.get('credentials', args.id)
 
+        if isinstance(entry, Note):
+            raise InlineRuntimeError('The request ID is not a credential.')
+
         if not entry:
-            raise InlineRuntimeError('Copy nothing to the clipboard')
+            print('The requested ID does not exist.')
+            return
 
         for pn in ('uuid', 'name', 'tags'):
             print(f'{pn.upper()}: {getattr(entry, pn) or "<null>"}')

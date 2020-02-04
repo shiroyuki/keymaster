@@ -2,8 +2,8 @@ from typing import List
 
 from imagination.decorator.service import registered
 
-from keymaster.model.secret import Secret
-from keymaster.storage import StorageService
+from keymaster.common.model.secret import Secret
+from keymaster.client.service.storage import StorageService
 
 
 @registered(auto_wired=True)

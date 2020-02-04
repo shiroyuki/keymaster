@@ -4,18 +4,13 @@ from typing import List
 
 from imagination import container
 
-from keymaster.cli.kms.inline.abc import SubCommand, InlineParser
-from keymaster.databank import Databank
-from keymaster.model.credential import Credential
+from keymaster.client.cli.inline.abc import SubCommand, InlineParser
+from keymaster.client.service.databank import Databank
+from keymaster.common.model.credential import Credential
 
 
 class Search(SubCommand):
-    """Search for credentials (c) or notes (n)"""
-    _type_aliases = {
-        'c': 'credentials',
-        'n': 'notes',
-    }
-
+    """Search for credentials or notes"""
     @lru_cache(maxsize=1)
     def get_aliases(self) -> List[str]:
         return ['search', 's']
@@ -23,16 +18,14 @@ class Search(SubCommand):
     @lru_cache(maxsize=1)
     def get_parser(self) -> InlineParser:
         parser = self._make_parser()
-        parser.add_argument('type')
         parser.add_argument('name')
         return parser
 
     def run(self, args: Namespace):
-        entry_type = args.type
         entry_name = args.name
 
         db: Databank = container.get(Databank)
-        results = db.find_many(self._type_aliases.get(entry_type) or entry_type, entry_name)
+        results = db.find_many('credentials', entry_name) + db.find_many('notes', entry_name)
 
         if not results:
             print('Nothing found')

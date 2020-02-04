@@ -1,4 +1,7 @@
+import os
 import sys
+from distutils.core import setup
+from typing import List
 
 _minimum_version = (3, 7)
 
@@ -8,7 +11,37 @@ if sys.version_info < _minimum_version:
     ))
 
 version = '0.1.0'
-from distutils.core import setup
+
+def list_packages(path: str = None) -> List[str]:
+    actual_path = path
+    package_list = []
+
+    if not actual_path:
+        actual_path = 'keymaster'
+        package_list.append(actual_path)
+
+    for node_name in os.listdir(actual_path):
+        if node_name[0] in ['.', '_']:
+            continue
+
+        sub_path = os.path.join(actual_path, node_name)
+        print(sub_path)
+
+        if not os.path.isdir(sub_path):
+            print(' - skipped (not dir)')
+            continue
+
+        print(' - included')
+
+        package_list.append(sub_path)
+        package_list.extend(list_packages(sub_path))
+
+    return [
+        pkg_path.replace(r'/', '.')
+        for pkg_path in package_list
+    ]
+
+package_list = list_packages()
 
 setup(
     name='keymaster',
@@ -18,14 +51,7 @@ setup(
     author='Juti Noppornpitak',
     author_email='juti_n@yahoo.co.jp',
     url='https://github.com/shiroyuki/gallium',
-    packages=[
-        'keymaster',
-        'keymaster.cli',
-        'keymaster.cli.kms',
-        'keymaster.cli.kms.inline',
-        'keymaster.cli.util',
-        'keymaster.model',
-    ],
+    packages=package_list,
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
@@ -46,8 +72,8 @@ setup(
     python_requires='>=3.7',
     entry_points = {
         'console_scripts': [
-            'keymaster=keymaster.starter:activate',
-            'km=keymaster.starter:activate',
+            'keymaster=keymaster.client.starter:activate',
+            'km=keymaster.client.starter:activate',
         ],
     }
 )

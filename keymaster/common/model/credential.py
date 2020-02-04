@@ -3,7 +3,7 @@ from time import time
 from typing import Optional, List
 from uuid import uuid4
 
-from keymaster.model.secret import Secret
+from keymaster.common.model.secret import Secret
 
 
 @dataclass

@@ -7,10 +7,10 @@ from typing import List
 from gallium.interface import ICommand
 from imagination.standalone import container
 
-from keymaster.model.credential import Credential
-from keymaster.model.decrypted_data import DecryptedData
-from keymaster.model.note import Note
-from keymaster.storage import StorageService
+from keymaster.common.model.credential import Credential
+from keymaster.common.model.decrypted_data import DecryptedData
+from keymaster.common.model.note import Note
+from keymaster.client.service.storage import StorageService
 
 
 class LastPassImport(ICommand):

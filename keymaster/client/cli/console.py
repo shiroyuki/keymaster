@@ -3,10 +3,10 @@ from argparse import ArgumentParser, Namespace
 from gallium import ICommand
 from gallium.interface import alias
 
-from keymaster.cli.kms.inline.abc import InlineError, InlineRuntimeError
-from keymaster.cli.kms.inline.copy_password import CopyPassword
-from keymaster.cli.kms.inline.get import Get
-from keymaster.cli.kms.inline.search import Search
+from keymaster.client.cli.inline.abc import InlineError, InlineRuntimeError
+from keymaster.client.cli.inline.copy_password import CopyPassword
+from keymaster.client.cli.inline.get import Get
+from keymaster.client.cli.inline.search import Search
 
 
 @alias('sh')

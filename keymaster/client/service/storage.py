@@ -5,9 +5,9 @@ from dataclasses import asdict
 
 from imagination.decorator.service import registered
 
-from keymaster.enigma import Enigma
-from keymaster.model.decrypted_data import DecryptedData
-from keymaster.static_config import LOCAL_STORAGE_FILEPATH, CONFIG_ROOT_DIR
+from keymaster.common.service.enigma import Enigma
+from keymaster.common.model.decrypted_data import DecryptedData
+from keymaster.client.static_config import LOCAL_STORAGE_FILEPATH, CONFIG_ROOT_DIR
 
 
 @registered(auto_wired=True)
