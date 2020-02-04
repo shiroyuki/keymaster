@@ -12,14 +12,14 @@ class Credential(Secret):
     name: str
     username: str
     password: str
-    extra: str
+    extra: Optional[str]
     tags: List[str]
     created_at: float
     updated_at: float
     deleted_at: Optional[float]
 
     @staticmethod
-    def make(name: str, username: str, password: str, extra: str, tags: List[str]):
+    def make(name: str, username: str, password: str, extra: Optional[str], tags: List[str]):
         return Credential(uuid=str(uuid4()),
                           name=name,
                           username=username,

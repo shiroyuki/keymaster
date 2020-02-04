@@ -5,6 +5,7 @@ from gallium.interface import alias
 
 from keymaster.client.cli.inline.abc import InlineError, InlineRuntimeError
 from keymaster.client.cli.inline.copy_password import CopyPassword
+from keymaster.client.cli.inline.create_credential import CreateCredential
 from keymaster.client.cli.inline.get import Get
 from keymaster.client.cli.inline.search import Search
 
@@ -26,6 +27,7 @@ class InteractiveShell(ICommand):
                 Get(),
                 Search(),
                 CopyPassword(),
+                CreateCredential(),
             ],
             key=lambda c: c.get_aliases()[0]
         )
@@ -39,7 +41,10 @@ class InteractiveShell(ICommand):
 
                 if response == 'list':
                     for cmd in cmd_list:
-                        print(f' - {cmd.get_aliases()[0]}')
+                        al = cmd.get_aliases()
+                        if not al:
+                            continue
+                        print(f' - {al[0]}{"" if len(al) == 1 else (" (shortcut: " + ", ".join(al[1:]) + ")")}')
 
                     print('\nFor more information, please type the command with -h.\n')
                     continue

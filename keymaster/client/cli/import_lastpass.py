@@ -1,7 +1,8 @@
+import csv
 import re
 from argparse import ArgumentParser, Namespace
 from dataclasses import dataclass
-import csv
+from time import time
 from typing import List
 
 from gallium.interface import ICommand
@@ -46,10 +47,16 @@ class LastPassImport(ICommand):
                     for i in range(len(headers))
                 }))
 
-        data = DecryptedData.make()
+        storage: StorageService = container.get(StorageService)
+
+        data = storage.load()
+        default_tag = f'imported:{time()}'
 
         for row in rows:
-            tags = [row.grouping] if row.grouping else []
+            tags = [default_tag]
+
+            if row.grouping:
+                tags.append(row.grouping)
 
             if row.url == 'http://sn':
                 data.notes.append(Note.make(row.name, row.extra, tags))
@@ -63,9 +70,6 @@ class LastPassImport(ICommand):
                     else:
                         tags.append('internet')
                 data.credentials.append(Credential.make(row.name, row.username, row.password, row.extra, tags))
-
-        storage: StorageService = container.get(StorageService)
-        # TODO Merge with existing data before saving
         storage.save(data)
 
 

@@ -1,6 +1,7 @@
 import json
 import os
 import subprocess
+from contextlib import contextmanager
 from dataclasses import asdict
 
 from imagination.decorator.service import registered
@@ -17,6 +18,9 @@ class StorageService:
         self.__enigma = enigma
 
     def load(self) -> DecryptedData:
+        if not os.path.exists(LOCAL_STORAGE_FILEPATH):
+            return DecryptedData.make()
+
         with open(LOCAL_STORAGE_FILEPATH, 'rb') as f:
             content = f.read()
 
@@ -33,3 +37,9 @@ class StorageService:
 
         with open(LOCAL_STORAGE_FILEPATH, 'wb') as f:
             f.write(self.__enigma.encrypt(decrypted_json).encode())
+
+    @contextmanager
+    def on_standby(self):
+        data = self.load()
+        yield data
+        self.save(data)

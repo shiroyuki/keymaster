@@ -6,7 +6,8 @@ from functools import lru_cache
 
 class InlineParser(ArgumentParser):
     def exit(self, status=0, message=None):
-        sys.stderr.write(f'ERROR: {message}\n')
+        if message:
+            sys.stderr.write(f'ERROR: {message}\n')
         raise InlineError(message)
 
     def error(self, message):
