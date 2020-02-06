@@ -10,8 +10,8 @@ from keymaster.common.model.secret import Secret
 class Credential(Secret):
     uuid: str
     name: str
-    username: str
-    password: str
+    username: Optional[str]
+    password: Optional[str]
     content: Optional[str]
     tags: List[str]
     created_at: float
@@ -22,10 +22,10 @@ class Credential(Secret):
     def make(name: str, username: str, password: str, content: Optional[str], tags: List[str]):
         return Credential(uuid=str(uuid4()),
                           name=name,
-                          content=content,
-                          tags=tags,
                           username=username,
                           password=password,
+                          content=content,
+                          tags=tags,
                           created_at=time(),
                           updated_at=None,
                           deleted_at=None)

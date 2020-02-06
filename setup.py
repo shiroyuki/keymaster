@@ -51,7 +51,7 @@ setup(
     author='Juti Noppornpitak',
     author_email='juti_n@yahoo.co.jp',
     url='https://github.com/shiroyuki/gallium',
-    packages=package_list,
+    packages=['keymaster_pb2', 'keymaster_pb2_grpc'] + package_list,
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',

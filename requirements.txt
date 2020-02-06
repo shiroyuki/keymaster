@@ -4,3 +4,6 @@ kotoba
 cryptography
 keyring
 pyperclip
+xmode>=0.2
+grpcio-tools
+grpcio
