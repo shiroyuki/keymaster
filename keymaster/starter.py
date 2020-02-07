@@ -10,6 +10,7 @@ def activate():
             'keymaster.client.cli.import_lastpass',
             'keymaster.client.cli.login',
             'keymaster.server.cli.grpc_server_run',
+            'keymaster.server.cli.setup',
         ]),
         in_isolation=True,
     )

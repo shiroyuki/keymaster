@@ -1,9 +1,13 @@
 gallium>=1.5.1
-imagination>=3.0.0
+imagination>=3.1.0
 kotoba
 cryptography
 keyring
 pyperclip
-xmode>=0.2
+xmode>=0.4
 grpcio-tools
 grpcio
+qrcode[pil]
+pyjwt
+sqlalchemy
+pymysql

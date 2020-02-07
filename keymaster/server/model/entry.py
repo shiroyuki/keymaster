@@ -1,14 +1,13 @@
 from dataclasses import dataclass
-from datetime import datetime
 from time import time
-from typing import Optional, Text
+from typing import Optional
 from uuid import uuid4
 
 from xmode.db.analyzer import stored_in, identified_by, constraint, default
-from xmode.db.definitions import UUID, DateTime
+from xmode.db.definitions import UUID, String, Float, Text
 
 
-@stored_in('profiles')
+@stored_in('entries')
 @identified_by('id')  # This is a PK.
 @constraint('index', ('owner_id',))
 @constraint('index', ('owner_id', 'kind',))
@@ -20,10 +19,10 @@ from xmode.db.definitions import UUID, DateTime
 class Entry:
     id: UUID
     owner_id: UUID
-    kind: str
-    name: str
-    searchable_term: str
+    kind: String
+    name: String
+    searchable_term: String
     content: Text
-    created_at: float
-    modified_at: float
-    deleted_at: Optional[float]
+    created_at: Float
+    modified_at: Float
+    deleted_at: Optional[Float]

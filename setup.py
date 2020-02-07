@@ -1,4 +1,5 @@
 import os
+import subprocess
 import sys
 from distutils.core import setup
 from typing import List
@@ -11,6 +12,7 @@ if sys.version_info < _minimum_version:
     ))
 
 version = '0.1.0'
+proto_pkgs = ['keymaster_pb2', 'keymaster_pb2_grpc']
 
 def list_packages(path: str = None) -> List[str]:
     actual_path = path
@@ -51,7 +53,7 @@ setup(
     author='Juti Noppornpitak',
     author_email='juti_n@yahoo.co.jp',
     url='https://github.com/shiroyuki/gallium',
-    packages=['keymaster_pb2', 'keymaster_pb2_grpc'] + package_list,
+    packages=package_list,
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
@@ -63,17 +65,24 @@ setup(
     ],
     install_requires=[
         'gallium>=1.5.1',
-        'imagination>=3.0.0',
+        'imagination>=3.1.0',
         'kotoba',
         'cryptography',
         'keyring',
         'pyperclip',
+        'xmode>=0.5',
+        'grpcio-tools',
+        'grpcio',
+        'qrcode[pil]',
+        'pyjwt',
+        'sqlalchemy',
+        'pymysql',
     ],
     python_requires='>=3.7',
     entry_points = {
         'console_scripts': [
-            'keymaster=keymaster.client.starter:activate',
-            'km=keymaster.client.starter:activate',
+            'keymaster=keymaster.starter:activate',
+            'km=keymaster.starter:activate',
         ],
     }
 )

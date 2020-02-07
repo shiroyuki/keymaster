@@ -16,4 +16,4 @@ class Login(ICommand):
 
     def execute(self, args):
         client = GRPCClient(args.host, args.port, not args.non_secure)
-        print(client.authenticate_user(args.username, args.password))
+        token = client.authenticate_user(args.username, args.password)

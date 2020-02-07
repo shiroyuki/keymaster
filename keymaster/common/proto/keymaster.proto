@@ -1,0 +1,158 @@
+syntax = "proto3";
+
+service Keymaster {
+    rpc AuthenticateUser(UserAuthenticationRequest) returns (UserAuthenticationResponse);
+    rpc AuthorizeUser(UserAuthorizationRequest) returns (UserAuthorizationResponse);
+    rpc GetAll(BlankRequest) returns (QueriedEntries);
+    rpc Search(QueryRequest) returns (QueriedEntries);
+    rpc Decrypt(DecryptionRequest) returns (DecryptionResponse);
+    rpc Create(NewRequest) returns (GetResponse);
+    rpc Get(GetRequest) returns (GetResponse);
+    rpc Put(PutRequest) returns (PutResponse);
+    rpc Sync(stream SyncEntry) returns (stream SyncEntry);  // In Python, stream is translated into an iterator of that class.
+}
+
+////////// SAMPLE STRUCTURES //////////
+message AbstractRequest {
+    string access_token = 1;  // --> Access Token
+    // ... additional content
+}
+
+message AbstractResponse {
+    uint32 status = 1;
+    string code = 2;
+    // ... additional content
+}
+
+////////// COMMON STRUCTURES //////////
+message SyncEntry {
+    // NOTE: EMPTY STRING is considered as NULL. Only use for the ingression.
+    string access_token = 1;
+    string id = 2;
+    string kind = 3;
+    string name = 4;
+    string content = 5;
+    repeated string tags = 6;
+    // NOTE: EMPTY STRING is considered as NULL.
+    string username = 7;
+    // NOTE: EMPTY STRING is considered as NULL.
+    string password = 8;
+    // NOTE: ZERO is considered as NULL
+    double created_at = 9;
+    // NOTE: ZERO is considered as NULL
+    double modified_at = 10;
+    // NOTE: ZERO is considered as NULL
+    double deleted_at = 11;
+}
+
+message ReadEntry {
+    string id = 1;
+    string kind = 2;
+    string name = 3;
+    string content = 4;
+    repeated string tags = 5;
+    // NOTE: EMPTY STRING is considered as NULL.
+    string username = 6;
+    // NOTE: EMPTY STRING is considered as NULL.
+    string password = 7;
+    // NOTE: ZERO is considered as NULL
+    double created_at = 8;
+    // NOTE: ZERO is considered as NULL
+    double modified_at = 9;
+}
+
+message NewEntry {
+    string kind = 1;
+    string name = 2;
+    string content = 3;
+    repeated string tags = 4;
+    // NOTE: EMPTY STRING is considered as NULL.
+    string username = 5;
+    // NOTE: EMPTY STRING is considered as NULL.
+    string password = 6;
+}
+
+message WriteEntry {
+    string id = 1;
+    string kind = 2;
+    string name = 3;
+    string content = 4;
+    repeated string tags = 5;
+    // NOTE: EMPTY STRING is considered as NULL.
+    string username = 6;
+    // NOTE: EMPTY STRING is considered as NULL.
+    string password = 7;
+}
+
+////////// REQUEST-RESPONSE STRUCTURES //////////
+message UserAuthenticationRequest {
+    string type = 1;  // "client" -> desktop client, "web" -> web client
+    string username = 2;
+    string password = 3;
+}
+message UserAuthenticationResponse {
+    string refresh_token = 1;
+}
+
+message UserAuthorizationRequest {
+    string refresh_token = 1;
+}
+
+message UserAuthorizationResponse {
+    string access_token = 1;
+}
+
+message BlankRequest {
+    string access_token = 1;
+}
+
+message QueryRequest {
+    string access_token = 1;
+    string term = 2;
+    repeated string type = 3;
+}
+
+message QueriedEntries {
+    uint32 status = 1;
+    string code = 2;
+    repeated ReadEntry entries = 3;
+}
+
+message NewRequest {
+    string access_token = 1;
+    NewEntry entry = 2;
+}
+
+message GetRequest {
+    string access_token = 1;
+    string id = 2;
+}
+
+message GetResponse {
+    uint32 status = 1;
+    string code = 2;
+    // NOTE: It is designed as a single-value field. Declare as a repeated field as proto3 only allows this type of field null.
+    repeated ReadEntry entry = 3;
+}
+
+message PutRequest {
+    string access_token = 1;
+    NewEntry entry = 2;
+}
+
+message PutResponse {
+    uint32 status = 1;
+    string code = 2;
+    string id = 3;
+}
+
+message DecryptionRequest {
+    string access_token = 1;
+    string content = 2;
+}
+
+message DecryptionResponse {
+    uint32 status = 1;
+    string code = 2;
+    string content = 3;
+}

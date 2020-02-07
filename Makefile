@@ -1,14 +1,23 @@
-PY_PROTO_DIR=.
+IMAGE_TAG=shiroyuki/keymaster
+PY_PROTO_DIR=keymaster/common/proto
 
 proto-generated-python:
-	(rm keymaster_pb2.py keymaster_pb2_grpc.py || echo "No old generated code"); \
-		echo "Generating the code from the proto file..." \
+	echo "Generating the code from the proto file..." \
 		&& python -m grpc_tools.protoc \
-			-I data \
-			--python_out=$(PY_PROTO_DIR) \
-			--grpc_python_out=$(PY_PROTO_DIR) \
-			data/keymaster.proto \
+			-I . \
+			--python_out=. \
+			--grpc_python_out=. \
+			$(PY_PROTO_DIR)/keymaster.proto \
 		&& echo "The code generation is complete."
+
+docker-build: proto-generated-python
+	docker build -t $(IMAGE_TAG) .
+
+test-server:
+	python3 -m keymaster serve -p 8000
+
+test-login:
+	python3 -m keymaster login --non-secure --port 8000 localhost developer password
 
 test-sh:
 	python3 -m keymaster sh
