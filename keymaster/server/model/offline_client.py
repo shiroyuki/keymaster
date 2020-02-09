@@ -9,9 +9,10 @@ from xmode.db.definitions import UUID, Float, String
 
 @stored_in('offline_clients')
 @identified_by('id')  # This is a PK.
+@constraint('index', ('remote_id',))
 @constraint('index', ('owner_id',))
-@constraint('index', ('owner_id', 'kind',))
-@constraint('index', ('owner_id', 'kind', 'name', 'searchable_term',))
+@constraint('index', ('kind',))
+@constraint('index', ('status',))
 @default('id', lambda: str(uuid4()))
 @default('created_at', time)
 @default('modified_at', time)
@@ -33,7 +34,7 @@ class OfflineClient:
     deleted_at: Optional[Float]
 
 
-class ClientStatus:
+class Status:
     ACTIVE = 'active'
     DISABLED = 'disabled'
     BLOCKED = 'blocked'

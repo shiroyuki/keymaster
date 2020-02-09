@@ -1,6 +1,8 @@
+import sys
+
 from gallium import ICommand
 
-from keymaster.client.service.grpc_client import GRPCClient
+from keymaster.client.service.grpc_client import GRPCClient, CallError
 
 
 class Login(ICommand):
@@ -16,4 +18,11 @@ class Login(ICommand):
 
     def execute(self, args):
         client = GRPCClient(args.host, args.port, not args.non_secure)
-        token = client.authenticate_user(args.username, args.password)
+        try:
+            token = client.authenticate_user(args.username, args.password)
+        except CallError as e:
+            reason = e.summary.details.get('reason') if isinstance(e.summary.details, dict) else None
+            sys.stderr.write(f'ERROR: {reason}\n' if reason else f'ERROR: {e.summary.details} ({e.summary.code})\n')
+            return 1
+
+        print(f'Authentication Token: {token}')

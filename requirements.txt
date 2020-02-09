@@ -4,7 +4,7 @@ kotoba
 cryptography
 keyring
 pyperclip
-xmode>=0.4
+xmode>=0.5
 grpcio-tools
 grpcio
 qrcode[pil]

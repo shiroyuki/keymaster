@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n&keymaster/common/proto/keymaster.proto\"\'\n\x0f\x41\x62stractRequest\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x01 \x01(\t\"0\n\x10\x41\x62stractResponse\x12\x0e\n\x06status\x18\x01 \x01(\r\x12\x0c\n\x04\x63ode\x18\x02 \x01(\t\"\xc9\x01\n\tSyncEntry\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x01 \x01(\t\x12\n\n\x02id\x18\x02 \x01(\t\x12\x0c\n\x04kind\x18\x03 \x01(\t\x12\x0c\n\x04name\x18\x04 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x05 \x01(\t\x12\x0c\n\x04tags\x18\x06 \x03(\t\x12\x10\n\x08username\x18\x07 \x01(\t\x12\x10\n\x08password\x18\x08 \x01(\t\x12\x12\n\ncreated_at\x18\t \x01(\x01\x12\x13\n\x0bmodified_at\x18\n \x01(\x01\x12\x12\n\ndeleted_at\x18\x0b \x01(\x01\"\x9f\x01\n\tReadEntry\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04kind\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x04 \x01(\t\x12\x0c\n\x04tags\x18\x05 \x03(\t\x12\x10\n\x08username\x18\x06 \x01(\t\x12\x10\n\x08password\x18\x07 \x01(\t\x12\x12\n\ncreated_at\x18\x08 \x01(\x01\x12\x13\n\x0bmodified_at\x18\t \x01(\x01\"i\n\x08NewEntry\x12\x0c\n\x04kind\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x03 \x01(\t\x12\x0c\n\x04tags\x18\x04 \x03(\t\x12\x10\n\x08username\x18\x05 \x01(\t\x12\x10\n\x08password\x18\x06 \x01(\t\"w\n\nWriteEntry\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04kind\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x04 \x01(\t\x12\x0c\n\x04tags\x18\x05 \x03(\t\x12\x10\n\x08username\x18\x06 \x01(\t\x12\x10\n\x08password\x18\x07 \x01(\t\"M\n\x19UserAuthenticationRequest\x12\x0c\n\x04type\x18\x01 \x01(\t\x12\x10\n\x08username\x18\x02 \x01(\t\x12\x10\n\x08password\x18\x03 \x01(\t\"3\n\x1aUserAuthenticationResponse\x12\x15\n\rrefresh_token\x18\x01 \x01(\t\"1\n\x18UserAuthorizationRequest\x12\x15\n\rrefresh_token\x18\x01 \x01(\t\"1\n\x19UserAuthorizationResponse\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x01 \x01(\t\"$\n\x0c\x42lankRequest\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x01 \x01(\t\"@\n\x0cQueryRequest\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x01 \x01(\t\x12\x0c\n\x04term\x18\x02 \x01(\t\x12\x0c\n\x04type\x18\x03 \x03(\t\"K\n\x0eQueriedEntries\x12\x0e\n\x06status\x18\x01 \x01(\r\x12\x0c\n\x04\x63ode\x18\x02 \x01(\t\x12\x1b\n\x07\x65ntries\x18\x03 \x03(\x0b\x32\n.ReadEntry\"<\n\nNewRequest\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x01 \x01(\t\x12\x18\n\x05\x65ntry\x18\x02 \x01(\x0b\x32\t.NewEntry\".\n\nGetRequest\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x01 \x01(\t\x12\n\n\x02id\x18\x02 \x01(\t\"F\n\x0bGetResponse\x12\x0e\n\x06status\x18\x01 \x01(\r\x12\x0c\n\x04\x63ode\x18\x02 \x01(\t\x12\x19\n\x05\x65ntry\x18\x03 \x03(\x0b\x32\n.ReadEntry\"<\n\nPutRequest\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x01 \x01(\t\x12\x18\n\x05\x65ntry\x18\x02 \x01(\x0b\x32\t.NewEntry\"7\n\x0bPutResponse\x12\x0e\n\x06status\x18\x01 \x01(\r\x12\x0c\n\x04\x63ode\x18\x02 \x01(\t\x12\n\n\x02id\x18\x03 \x01(\t\":\n\x11\x44\x65\x63ryptionRequest\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x01 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x02 \x01(\t\"C\n\x12\x44\x65\x63ryptionResponse\x12\x0e\n\x06status\x18\x01 \x01(\r\x12\x0c\n\x04\x63ode\x18\x02 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x03 \x01(\t2\xb5\x03\n\tKeymaster\x12K\n\x10\x41uthenticateUser\x12\x1a.UserAuthenticationRequest\x1a\x1b.UserAuthenticationResponse\x12\x46\n\rAuthorizeUser\x12\x19.UserAuthorizationRequest\x1a\x1a.UserAuthorizationResponse\x12(\n\x06GetAll\x12\r.BlankRequest\x1a\x0f.QueriedEntries\x12(\n\x06Search\x12\r.QueryRequest\x1a\x0f.QueriedEntries\x12\x32\n\x07\x44\x65\x63rypt\x12\x12.DecryptionRequest\x1a\x13.DecryptionResponse\x12#\n\x06\x43reate\x12\x0b.NewRequest\x1a\x0c.GetResponse\x12 \n\x03Get\x12\x0b.GetRequest\x1a\x0c.GetResponse\x12 \n\x03Put\x12\x0b.PutRequest\x1a\x0c.PutResponse\x12\"\n\x04Sync\x12\n.SyncEntry\x1a\n.SyncEntry(\x01\x30\x01\x62\x06proto3')
+  serialized_pb=_b('\n&keymaster/common/proto/keymaster.proto\"\'\n\x0f\x41\x62stractRequest\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x01 \x01(\t\"0\n\x10\x41\x62stractResponse\x12\x0e\n\x06status\x18\x01 \x01(\r\x12\x0c\n\x04\x63ode\x18\x02 \x01(\t\"\xc9\x01\n\tSyncEntry\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x01 \x01(\t\x12\n\n\x02id\x18\x02 \x01(\t\x12\x0c\n\x04kind\x18\x03 \x01(\t\x12\x0c\n\x04name\x18\x04 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x05 \x01(\t\x12\x0c\n\x04tags\x18\x06 \x03(\t\x12\x10\n\x08username\x18\x07 \x01(\t\x12\x10\n\x08password\x18\x08 \x01(\t\x12\x12\n\ncreated_at\x18\t \x01(\x01\x12\x13\n\x0bmodified_at\x18\n \x01(\x01\x12\x12\n\ndeleted_at\x18\x0b \x01(\x01\"\x9f\x01\n\tReadEntry\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04kind\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x04 \x01(\t\x12\x0c\n\x04tags\x18\x05 \x03(\t\x12\x10\n\x08username\x18\x06 \x01(\t\x12\x10\n\x08password\x18\x07 \x01(\t\x12\x12\n\ncreated_at\x18\x08 \x01(\x01\x12\x13\n\x0bmodified_at\x18\t \x01(\x01\"i\n\x08NewEntry\x12\x0c\n\x04kind\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x03 \x01(\t\x12\x0c\n\x04tags\x18\x04 \x03(\t\x12\x10\n\x08username\x18\x05 \x01(\t\x12\x10\n\x08password\x18\x06 \x01(\t\"w\n\nWriteEntry\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04kind\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x04 \x01(\t\x12\x0c\n\x04tags\x18\x05 \x03(\t\x12\x10\n\x08username\x18\x06 \x01(\t\x12\x10\n\x08password\x18\x07 \x01(\t\"X\n\x04User\x12\n\n\x02id\x18\x01 \x01(\t\x12\x14\n\x0c\x64\x65\x66\x61ult_role\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x10\n\x08username\x18\x04 \x01(\t\x12\x0e\n\x06status\x18\x05 \x01(\t\"$\n\x0c\x42lankRequest\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x01 \x01(\t\"M\n\x19UserAuthenticationRequest\x12\x0c\n\x04type\x18\x01 \x01(\t\x12\x10\n\x08username\x18\x02 \x01(\t\x12\x10\n\x08password\x18\x03 \x01(\t\"3\n\x1aUserAuthenticationResponse\x12\x15\n\rrefresh_token\x18\x01 \x01(\t\"1\n\x18UserAuthorizationRequest\x12\x15\n\rrefresh_token\x18\x01 \x01(\t\"1\n\x19UserAuthorizationResponse\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x01 \x01(\t\"H\n\x13UserProfileResponse\x12\x0e\n\x06status\x18\x01 \x01(\r\x12\x0c\n\x04\x63ode\x18\x02 \x01(\t\x12\x13\n\x04user\x18\x03 \x03(\x0b\x32\x05.User\"@\n\x0cQueryRequest\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x01 \x01(\t\x12\x0c\n\x04term\x18\x02 \x01(\t\x12\x0c\n\x04type\x18\x03 \x03(\t\"K\n\x0eQueriedEntries\x12\x0e\n\x06status\x18\x01 \x01(\r\x12\x0c\n\x04\x63ode\x18\x02 \x01(\t\x12\x1b\n\x07\x65ntries\x18\x03 \x03(\x0b\x32\n.ReadEntry\"<\n\nNewRequest\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x01 \x01(\t\x12\x18\n\x05\x65ntry\x18\x02 \x01(\x0b\x32\t.NewEntry\".\n\nGetRequest\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x01 \x01(\t\x12\n\n\x02id\x18\x02 \x01(\t\"F\n\x0bGetResponse\x12\x0e\n\x06status\x18\x01 \x01(\r\x12\x0c\n\x04\x63ode\x18\x02 \x01(\t\x12\x19\n\x05\x65ntry\x18\x03 \x03(\x0b\x32\n.ReadEntry\"<\n\nPutRequest\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x01 \x01(\t\x12\x18\n\x05\x65ntry\x18\x02 \x01(\x0b\x32\t.NewEntry\"7\n\x0bPutResponse\x12\x0e\n\x06status\x18\x01 \x01(\r\x12\x0c\n\x04\x63ode\x18\x02 \x01(\t\x12\n\n\x02id\x18\x03 \x01(\t\":\n\x11\x44\x65\x63ryptionRequest\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x01 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x02 \x01(\t\"C\n\x12\x44\x65\x63ryptionResponse\x12\x0e\n\x06status\x18\x01 \x01(\r\x12\x0c\n\x04\x63ode\x18\x02 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x03 \x01(\t2\xea\x03\n\tKeymaster\x12K\n\x10\x41uthenticateUser\x12\x1a.UserAuthenticationRequest\x1a\x1b.UserAuthenticationResponse\x12\x46\n\rAuthorizeUser\x12\x19.UserAuthorizationRequest\x1a\x1a.UserAuthorizationResponse\x12\x33\n\x0cGetMyProfile\x12\r.BlankRequest\x1a\x14.UserProfileResponse\x12(\n\x06GetAll\x12\r.BlankRequest\x1a\x0f.QueriedEntries\x12(\n\x06Search\x12\r.QueryRequest\x1a\x0f.QueriedEntries\x12\x32\n\x07\x44\x65\x63rypt\x12\x12.DecryptionRequest\x1a\x13.DecryptionResponse\x12#\n\x06\x43reate\x12\x0b.NewRequest\x1a\x0c.GetResponse\x12 \n\x03Get\x12\x0b.GetRequest\x1a\x0c.GetResponse\x12 \n\x03Put\x12\x0b.PutRequest\x1a\x0c.PutResponse\x12\"\n\x04Sync\x12\n.SyncEntry\x1a\n.SyncEntry(\x01\x30\x01\x62\x06proto3')
 )
 
 
@@ -422,6 +422,96 @@ _WRITEENTRY = _descriptor.Descriptor(
 )
 
 
+_USER = _descriptor.Descriptor(
+  name='User',
+  full_name='User',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='User.id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='default_role', full_name='User.default_role', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='name', full_name='User.name', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='username', full_name='User.username', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='status', full_name='User.status', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=727,
+  serialized_end=815,
+)
+
+
+_BLANKREQUEST = _descriptor.Descriptor(
+  name='BlankRequest',
+  full_name='BlankRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='access_token', full_name='BlankRequest.access_token', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=817,
+  serialized_end=853,
+)
+
+
 _USERAUTHENTICATIONREQUEST = _descriptor.Descriptor(
   name='UserAuthenticationRequest',
   full_name='UserAuthenticationRequest',
@@ -462,8 +552,8 @@ _USERAUTHENTICATIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=727,
-  serialized_end=804,
+  serialized_start=855,
+  serialized_end=932,
 )
 
 
@@ -493,8 +583,8 @@ _USERAUTHENTICATIONRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=806,
-  serialized_end=857,
+  serialized_start=934,
+  serialized_end=985,
 )
 
 
@@ -524,8 +614,8 @@ _USERAUTHORIZATIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=859,
-  serialized_end=908,
+  serialized_start=987,
+  serialized_end=1036,
 )
 
 
@@ -555,22 +645,36 @@ _USERAUTHORIZATIONRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=910,
-  serialized_end=959,
+  serialized_start=1038,
+  serialized_end=1087,
 )
 
 
-_BLANKREQUEST = _descriptor.Descriptor(
-  name='BlankRequest',
-  full_name='BlankRequest',
+_USERPROFILERESPONSE = _descriptor.Descriptor(
+  name='UserProfileResponse',
+  full_name='UserProfileResponse',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='access_token', full_name='BlankRequest.access_token', index=0,
-      number=1, type=9, cpp_type=9, label=1,
+      name='status', full_name='UserProfileResponse.status', index=0,
+      number=1, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='code', full_name='UserProfileResponse.code', index=1,
+      number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='user', full_name='UserProfileResponse.user', index=2,
+      number=3, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
@@ -586,8 +690,8 @@ _BLANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=961,
-  serialized_end=997,
+  serialized_start=1089,
+  serialized_end=1161,
 )
 
 
@@ -631,8 +735,8 @@ _QUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=999,
-  serialized_end=1063,
+  serialized_start=1163,
+  serialized_end=1227,
 )
 
 
@@ -676,8 +780,8 @@ _QUERIEDENTRIES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1065,
-  serialized_end=1140,
+  serialized_start=1229,
+  serialized_end=1304,
 )
 
 
@@ -714,8 +818,8 @@ _NEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1142,
-  serialized_end=1202,
+  serialized_start=1306,
+  serialized_end=1366,
 )
 
 
@@ -752,8 +856,8 @@ _GETREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1204,
-  serialized_end=1250,
+  serialized_start=1368,
+  serialized_end=1414,
 )
 
 
@@ -797,8 +901,8 @@ _GETRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1252,
-  serialized_end=1322,
+  serialized_start=1416,
+  serialized_end=1486,
 )
 
 
@@ -835,8 +939,8 @@ _PUTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1324,
-  serialized_end=1384,
+  serialized_start=1488,
+  serialized_end=1548,
 )
 
 
@@ -880,8 +984,8 @@ _PUTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1386,
-  serialized_end=1441,
+  serialized_start=1550,
+  serialized_end=1605,
 )
 
 
@@ -918,8 +1022,8 @@ _DECRYPTIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1443,
-  serialized_end=1501,
+  serialized_start=1607,
+  serialized_end=1665,
 )
 
 
@@ -963,10 +1067,11 @@ _DECRYPTIONRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1503,
-  serialized_end=1570,
+  serialized_start=1667,
+  serialized_end=1734,
 )
 
+_USERPROFILERESPONSE.fields_by_name['user'].message_type = _USER
 _QUERIEDENTRIES.fields_by_name['entries'].message_type = _READENTRY
 _NEWREQUEST.fields_by_name['entry'].message_type = _NEWENTRY
 _GETRESPONSE.fields_by_name['entry'].message_type = _READENTRY
@@ -977,11 +1082,13 @@ DESCRIPTOR.message_types_by_name['SyncEntry'] = _SYNCENTRY
 DESCRIPTOR.message_types_by_name['ReadEntry'] = _READENTRY
 DESCRIPTOR.message_types_by_name['NewEntry'] = _NEWENTRY
 DESCRIPTOR.message_types_by_name['WriteEntry'] = _WRITEENTRY
+DESCRIPTOR.message_types_by_name['User'] = _USER
+DESCRIPTOR.message_types_by_name['BlankRequest'] = _BLANKREQUEST
 DESCRIPTOR.message_types_by_name['UserAuthenticationRequest'] = _USERAUTHENTICATIONREQUEST
 DESCRIPTOR.message_types_by_name['UserAuthenticationResponse'] = _USERAUTHENTICATIONRESPONSE
 DESCRIPTOR.message_types_by_name['UserAuthorizationRequest'] = _USERAUTHORIZATIONREQUEST
 DESCRIPTOR.message_types_by_name['UserAuthorizationResponse'] = _USERAUTHORIZATIONRESPONSE
-DESCRIPTOR.message_types_by_name['BlankRequest'] = _BLANKREQUEST
+DESCRIPTOR.message_types_by_name['UserProfileResponse'] = _USERPROFILERESPONSE
 DESCRIPTOR.message_types_by_name['QueryRequest'] = _QUERYREQUEST
 DESCRIPTOR.message_types_by_name['QueriedEntries'] = _QUERIEDENTRIES
 DESCRIPTOR.message_types_by_name['NewRequest'] = _NEWREQUEST
@@ -1035,6 +1142,20 @@ WriteEntry = _reflection.GeneratedProtocolMessageType('WriteEntry', (_message.Me
   })
 _sym_db.RegisterMessage(WriteEntry)
 
+User = _reflection.GeneratedProtocolMessageType('User', (_message.Message,), {
+  'DESCRIPTOR' : _USER,
+  '__module__' : 'keymaster.common.proto.keymaster_pb2'
+  # @@protoc_insertion_point(class_scope:User)
+  })
+_sym_db.RegisterMessage(User)
+
+BlankRequest = _reflection.GeneratedProtocolMessageType('BlankRequest', (_message.Message,), {
+  'DESCRIPTOR' : _BLANKREQUEST,
+  '__module__' : 'keymaster.common.proto.keymaster_pb2'
+  # @@protoc_insertion_point(class_scope:BlankRequest)
+  })
+_sym_db.RegisterMessage(BlankRequest)
+
 UserAuthenticationRequest = _reflection.GeneratedProtocolMessageType('UserAuthenticationRequest', (_message.Message,), {
   'DESCRIPTOR' : _USERAUTHENTICATIONREQUEST,
   '__module__' : 'keymaster.common.proto.keymaster_pb2'
@@ -1063,12 +1184,12 @@ UserAuthorizationResponse = _reflection.GeneratedProtocolMessageType('UserAuthor
   })
 _sym_db.RegisterMessage(UserAuthorizationResponse)
 
-BlankRequest = _reflection.GeneratedProtocolMessageType('BlankRequest', (_message.Message,), {
-  'DESCRIPTOR' : _BLANKREQUEST,
+UserProfileResponse = _reflection.GeneratedProtocolMessageType('UserProfileResponse', (_message.Message,), {
+  'DESCRIPTOR' : _USERPROFILERESPONSE,
   '__module__' : 'keymaster.common.proto.keymaster_pb2'
-  # @@protoc_insertion_point(class_scope:BlankRequest)
+  # @@protoc_insertion_point(class_scope:UserProfileResponse)
   })
-_sym_db.RegisterMessage(BlankRequest)
+_sym_db.RegisterMessage(UserProfileResponse)
 
 QueryRequest = _reflection.GeneratedProtocolMessageType('QueryRequest', (_message.Message,), {
   'DESCRIPTOR' : _QUERYREQUEST,
@@ -1141,8 +1262,8 @@ _KEYMASTER = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=1573,
-  serialized_end=2010,
+  serialized_start=1737,
+  serialized_end=2227,
   methods=[
   _descriptor.MethodDescriptor(
     name='AuthenticateUser',
@@ -1163,9 +1284,18 @@ _KEYMASTER = _descriptor.ServiceDescriptor(
     serialized_options=None,
   ),
   _descriptor.MethodDescriptor(
+    name='GetMyProfile',
+    full_name='Keymaster.GetMyProfile',
+    index=2,
+    containing_service=None,
+    input_type=_BLANKREQUEST,
+    output_type=_USERPROFILERESPONSE,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
     name='GetAll',
     full_name='Keymaster.GetAll',
-    index=2,
+    index=3,
     containing_service=None,
     input_type=_BLANKREQUEST,
     output_type=_QUERIEDENTRIES,
@@ -1174,7 +1304,7 @@ _KEYMASTER = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='Search',
     full_name='Keymaster.Search',
-    index=3,
+    index=4,
     containing_service=None,
     input_type=_QUERYREQUEST,
     output_type=_QUERIEDENTRIES,
@@ -1183,7 +1313,7 @@ _KEYMASTER = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='Decrypt',
     full_name='Keymaster.Decrypt',
-    index=4,
+    index=5,
     containing_service=None,
     input_type=_DECRYPTIONREQUEST,
     output_type=_DECRYPTIONRESPONSE,
@@ -1192,7 +1322,7 @@ _KEYMASTER = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='Create',
     full_name='Keymaster.Create',
-    index=5,
+    index=6,
     containing_service=None,
     input_type=_NEWREQUEST,
     output_type=_GETRESPONSE,
@@ -1201,7 +1331,7 @@ _KEYMASTER = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='Get',
     full_name='Keymaster.Get',
-    index=6,
+    index=7,
     containing_service=None,
     input_type=_GETREQUEST,
     output_type=_GETRESPONSE,
@@ -1210,7 +1340,7 @@ _KEYMASTER = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='Put',
     full_name='Keymaster.Put',
-    index=7,
+    index=8,
     containing_service=None,
     input_type=_PUTREQUEST,
     output_type=_PUTRESPONSE,
@@ -1219,7 +1349,7 @@ _KEYMASTER = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='Sync',
     full_name='Keymaster.Sync',
-    index=8,
+    index=9,
     containing_service=None,
     input_type=_SYNCENTRY,
     output_type=_SYNCENTRY,

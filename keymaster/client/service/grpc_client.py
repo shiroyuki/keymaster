@@ -28,15 +28,14 @@ class GRPCClient:
         try:
             yield stub
         except Exception as e:
-            sys.stderr.write('ERROR: Unexpectedly detected error\n')
-            # print_exc()
             error = e
         finally:
             del stub
             channel.close()
 
         if error:
-            raise CallError(ErrorSummary.from_grpc_error(error))
+            summary = ErrorSummary.from_grpc_error(error)
+            raise CallError(summary)
 
     def authenticate_user(self, username: str, password: str) -> str:
         with self.connect() as stub:
@@ -55,8 +54,17 @@ class ErrorSummary:
     def from_grpc_error(e: BaseException):
         if not hasattr(e, 'code') and callable(e.code) and not hasattr(e, 'details') and callable(e.details):
             return ErrorSummary(code=None, details=None, original=e)
-        return ErrorSummary(code=e.code(), details=json.loads(e.details()), original=e)
+        try:
+            return ErrorSummary(code=e.code(), details=json.loads(e.details()), original=e)
+        except json.JSONDecodeError:
+            return ErrorSummary(code=e.code(), details=e.details(), original=e)
 
 
 class CallError(RuntimeError):
-    pass
+    def __init__(self, summary: ErrorSummary):
+        self.__summary = summary
+        super()
+
+    @property
+    def summary(self) -> ErrorSummary:
+        return self.__summary

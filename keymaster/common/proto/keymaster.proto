@@ -1,8 +1,12 @@
 syntax = "proto3";
 
 service Keymaster {
+    // Authentication and authorization
     rpc AuthenticateUser(UserAuthenticationRequest) returns (UserAuthenticationResponse);
     rpc AuthorizeUser(UserAuthorizationRequest) returns (UserAuthorizationResponse);
+    // Admin-level APIs
+    // User-level APIs
+    rpc GetMyProfile(BlankRequest) returns (UserProfileResponse);
     rpc GetAll(BlankRequest) returns (QueriedEntries);
     rpc Search(QueryRequest) returns (QueriedEntries);
     rpc Decrypt(DecryptionRequest) returns (DecryptionResponse);
@@ -84,12 +88,25 @@ message WriteEntry {
     string password = 7;
 }
 
+message User {
+    string id = 1;
+    string default_role = 2;
+    string name = 3;
+    string username = 4;
+    string status = 5;
+}
+
 ////////// REQUEST-RESPONSE STRUCTURES //////////
+message BlankRequest {
+    string access_token = 1;
+}
+
 message UserAuthenticationRequest {
     string type = 1;  // "client" -> desktop client, "web" -> web client
     string username = 2;
     string password = 3;
 }
+
 message UserAuthenticationResponse {
     string refresh_token = 1;
 }
@@ -102,8 +119,10 @@ message UserAuthorizationResponse {
     string access_token = 1;
 }
 
-message BlankRequest {
-    string access_token = 1;
+message UserProfileResponse {
+    uint32 status = 1;
+    string code = 2;
+    repeated User user = 3;
 }
 
 message QueryRequest {

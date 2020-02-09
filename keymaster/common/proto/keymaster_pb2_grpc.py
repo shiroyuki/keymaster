@@ -24,6 +24,11 @@ class KeymasterStub(object):
         request_serializer=keymaster_dot_common_dot_proto_dot_keymaster__pb2.UserAuthorizationRequest.SerializeToString,
         response_deserializer=keymaster_dot_common_dot_proto_dot_keymaster__pb2.UserAuthorizationResponse.FromString,
         )
+    self.GetMyProfile = channel.unary_unary(
+        '/Keymaster/GetMyProfile',
+        request_serializer=keymaster_dot_common_dot_proto_dot_keymaster__pb2.BlankRequest.SerializeToString,
+        response_deserializer=keymaster_dot_common_dot_proto_dot_keymaster__pb2.UserProfileResponse.FromString,
+        )
     self.GetAll = channel.unary_unary(
         '/Keymaster/GetAll',
         request_serializer=keymaster_dot_common_dot_proto_dot_keymaster__pb2.BlankRequest.SerializeToString,
@@ -66,8 +71,8 @@ class KeymasterServicer(object):
   pass
 
   def AuthenticateUser(self, request, context):
-    # missing associated documentation comment in .proto file
-    pass
+    """Authentication and authorization
+    """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
@@ -75,6 +80,14 @@ class KeymasterServicer(object):
   def AuthorizeUser(self, request, context):
     # missing associated documentation comment in .proto file
     pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def GetMyProfile(self, request, context):
+    """Admin-level APIs
+    User-level APIs
+    """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
@@ -140,6 +153,11 @@ def add_KeymasterServicer_to_server(servicer, server):
           servicer.AuthorizeUser,
           request_deserializer=keymaster_dot_common_dot_proto_dot_keymaster__pb2.UserAuthorizationRequest.FromString,
           response_serializer=keymaster_dot_common_dot_proto_dot_keymaster__pb2.UserAuthorizationResponse.SerializeToString,
+      ),
+      'GetMyProfile': grpc.unary_unary_rpc_method_handler(
+          servicer.GetMyProfile,
+          request_deserializer=keymaster_dot_common_dot_proto_dot_keymaster__pb2.BlankRequest.FromString,
+          response_serializer=keymaster_dot_common_dot_proto_dot_keymaster__pb2.UserProfileResponse.SerializeToString,
       ),
       'GetAll': grpc.unary_unary_rpc_method_handler(
           servicer.GetAll,

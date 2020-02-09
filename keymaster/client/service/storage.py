@@ -6,14 +6,14 @@ from dataclasses import asdict
 
 from imagination.decorator.service import registered
 
-from keymaster.common.service.enigma import Enigma
+from keymaster.client.service.local_enigma import LocalEnigma
 from keymaster.common.model.decrypted_data import DecryptedData
 from keymaster.client.static_config import LOCAL_STORAGE_FILEPATH, CONFIG_ROOT_DIR
 
 
 @registered(auto_wired=True)
 class StorageService:
-    def __init__(self, enigma: Enigma):
+    def __init__(self, enigma: LocalEnigma):
         self.__in_debug_mode = os.getenv('STORAGE_DEBUG') in ['1', 'true']
         self.__enigma = enigma
 

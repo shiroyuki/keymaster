@@ -3,6 +3,7 @@ from concurrent.futures.thread import ThreadPoolExecutor
 import grpc
 from gallium import ICommand
 from gallium.interface import alias
+from imagination.standalone import container
 
 from keymaster.common.proto.keymaster_pb2_grpc import add_KeymasterServicer_to_server
 from keymaster.server.service.keymaster_grpc_service import KeymasterGRPCService
@@ -20,7 +21,7 @@ class GRPCServerRun(ICommand):
 
     def execute(self, args):
         # Designed to work behind a proxy server.
-        service = KeymasterGRPCService()
+        service: KeymasterGRPCService = container.get(KeymasterGRPCService)
         server = grpc.server(ThreadPoolExecutor(max_workers=10))
 
         add_KeymasterServicer_to_server(service, server)

@@ -11,7 +11,8 @@ from xmode.db.definitions import UUID, String, Float, Text
 @identified_by('id')  # This is a PK.
 @constraint('index', ('owner_id',))
 @constraint('index', ('owner_id', 'kind',))
-@constraint('index', ('owner_id', 'kind', 'name', 'searchable_term',))
+@constraint('index', ('owner_id', 'kind', 'name',))
+@constraint('index', ('searchable_term',))
 @default('id', lambda: str(uuid4()))
 @default('created_at', time)
 @default('modified_at', time)

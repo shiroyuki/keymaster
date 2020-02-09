@@ -10,8 +10,18 @@ proto-generated-python:
 			$(PY_PROTO_DIR)/keymaster.proto \
 		&& echo "The code generation is complete."
 
+install:
+	@echo "INFO: Installing the package"
+	@pip3 install --no-deps -qI .
+	@echo "INFO: Installation complete"
+
 docker-build: proto-generated-python
 	docker build -t $(IMAGE_TAG) .
+
+dev-reset:
+	(python -m keymaster server:teardown || echo "Nothing to reset"); python -m keymaster server:setup
+
+dev-run: test-server
 
 test-server:
 	python3 -m keymaster serve -p 8000

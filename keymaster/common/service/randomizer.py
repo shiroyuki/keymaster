@@ -9,8 +9,8 @@ from imagination.decorator.service import registered
 class Randomizer:
     def __init__(self):
         self.__known_generator_map: Dict[str, Callable] = {
-            'openssl:base64': self._use_openssl_base64,
-            'openssl:hex': self._use_openssl_hex,
+            RandomizerMethod.OPENSSL_BASE64: self._use_openssl_base64,
+            RandomizerMethod.OPENSSL_HEX: self._use_openssl_hex,
         }
 
     @property
@@ -25,11 +25,16 @@ class Randomizer:
 
     @staticmethod
     def _use_openssl_base64(length: int) -> str:
-        return subprocess.check_output(['openssl', 'rand', '-base64', str(length)]).decode()
+        return subprocess.check_output(['openssl', 'rand', '-base64', str(length)]).decode().strip()
 
     @staticmethod
     def _use_openssl_hex(length: int) -> str:
-        return subprocess.check_output(['openssl', 'rand', '-hex', str(length)]).decode()
+        return subprocess.check_output(['openssl', 'rand', '-hex', str(length)]).decode().strip()
+
+
+class RandomizerMethod:
+    OPENSSL_BASE64 = 'openssl:base64'
+    OPENSSL_HEX = 'openssl:hex'
 
 
 class UnknownRandomizationMethodError(RuntimeError):

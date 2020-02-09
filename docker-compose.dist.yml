@@ -1,16 +1,11 @@
-# Development setup
+# Production setup
 version: '3'
 services:
   api:
     image: shiroyuki/keymaster
-    container_name: shiroyuki.keymaster.api
-    command: tail -f /dev/null
+    restart: unless-stopped
     ports:
       - 8000:8000
-    volumes:
-      - .:/opt/app
-      - ../Imagination:/opt/Imagination  # For debugging only
-      - ../xmode:/opt/xmode  # For debugging only
     environment:
       KEYMASTER_SERVER_ENIGMA_KEY: ${KEYMASTER_SERVER_ENIGMA_KEY}
       KEYMASTER_JWT_SECRET: ${KEYMASTER_JWT_SECRET}
@@ -19,25 +14,11 @@ services:
       KEYMASTER_DB_URL: mysql+pymysql://root:${RDS_SERVER_PASSWORD}@rds:3306
       KEYMASTER_DB_NAME: ${KEYMASTER_DB_NAME}
 
-  cli:
-    image: shiroyuki/keymaster
-    container_name: shiroyuki.keymaster.cli
-    command: tail -f /dev/null
-    volumes:
-      - .:/opt/app
-
   rds:
     image: mariadb:10
-    container_name: shiroyuki.keymaster.rds
     restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: ${RDS_SERVER_PASSWORD}
     privileged: true
     volumes:
       - ./mnt/data/mysql:/var/lib/mysql
-    ports:
-        - 3307:3306
-
-#    redis:
-#        image: redis:5-alpine
-#        container_name: shiroyuki.keymaster.redis
